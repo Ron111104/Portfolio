@@ -1,0 +1,180 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+@layer base {
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: #040316;
+    color: #EDE9FE;
+    font-family: 'Inter', system-ui, sans-serif;
+    overflow-x: hidden;
+    position: relative;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+      radial-gradient(circle at 15% 20%, rgba(255,255,255,0.35) 1px, transparent 1px),
+      radial-gradient(circle at 45% 70%, rgba(255,255,255,0.35) 1px, transparent 1px),
+      radial-gradient(circle at 75% 30%, rgba(255,255,255,0.35) 2px, transparent 2px),
+      radial-gradient(circle at 25% 80%, rgba(255,255,255,0.35) 1px, transparent 1px),
+      radial-gradient(circle at 85% 60%, rgba(255,255,255,0.35) 1px, transparent 1px),
+      radial-gradient(circle at 60% 15%, rgba(255,255,255,0.35) 2px, transparent 2px),
+      radial-gradient(circle at 35% 45%, rgba(255,255,255,0.35) 1px, transparent 1px),
+      radial-gradient(circle at 90% 25%, rgba(255,255,255,0.35) 1px, transparent 1px),
+      radial-gradient(circle at 10% 55%, rgba(255,255,255,0.35) 1px, transparent 1px),
+      radial-gradient(circle at 55% 85%, rgba(255,255,255,0.35) 2px, transparent 2px);
+    background-size: 200px 200px, 300px 300px, 250px 250px, 280px 280px, 220px 220px, 260px 260px, 240px 240px, 290px 290px, 210px 210px, 270px 270px;
+    background-position: 0 0, 50px 50px, 100px 100px, 150px 150px, 200px 200px, 250px 250px, 300px 300px, 350px 350px, 400px 400px, 450px 450px;
+    pointer-events: none;
+    z-index: 0;
+    filter: blur(0.5px);
+  }
+
+  ::selection {
+    background: rgba(139, 92, 246, 0.4);
+    color: #EDE9FE;
+  }
+
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #08082C;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #8B5CF6, #3B5CFF);
+    border-radius: 4px;
+  }
+}
+
+@layer components {
+  .glass {
+    background: rgba(15, 16, 54, 0.6);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(31, 32, 112, 0.5);
+  }
+
+  .glass-card {
+    background: rgba(15, 16, 54, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid #1F2070;
+    border-radius: 16px;
+  }
+
+  .neon-border {
+    position: relative;
+  }
+
+  .neon-border::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: inherit;
+    padding: 2px;
+    background: linear-gradient(90deg, #8B5CF6, #3B5CFF, #A855F7);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0.6;
+    transition: opacity 0.3s ease;
+  }
+
+  .neon-border:hover::before {
+    opacity: 1;
+  }
+
+  .neon-text {
+    background: linear-gradient(90deg, #8B5CF6, #3B5CFF);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .neon-glow {
+    text-shadow: 0 0 10px rgba(139, 92, 246, 0.8),
+                 0 0 20px rgba(139, 92, 246, 0.6),
+                 0 0 30px rgba(139, 92, 246, 0.4);
+  }
+
+  .btn-neon {
+    background: linear-gradient(90deg, #8B5CF6, #3B5CFF);
+    border-radius: 10px;
+    box-shadow: 0 0 18px rgba(139, 92, 246, 0.6);
+    transition: all 0.3s ease;
+  }
+
+  .btn-neon:hover {
+    box-shadow: 0 0 30px rgba(139, 92, 246, 0.9);
+    transform: translateY(-2px);
+  }
+
+  .grid-bg {
+    background-image: 
+      linear-gradient(rgba(23, 24, 90, 0.5) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(23, 24, 90, 0.5) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  .section-container {
+    @apply max-w-7xl mx-auto px-6 py-24;
+  }
+
+  .progress-bar {
+    background: linear-gradient(90deg, #A855F7, #22D3EE);
+    border-radius: 9999px;
+    height: 8px;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .animate-delay-100 {
+    animation-delay: 100ms;
+  }
+
+  .animate-delay-200 {
+    animation-delay: 200ms;
+  }
+
+  .animate-delay-300 {
+    animation-delay: 300ms;
+  }
+
+  .animate-delay-400 {
+    animation-delay: 400ms;
+  }
+
+  .animate-delay-500 {
+    animation-delay: 500ms;
+  }
+
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+}
